@@ -1,5 +1,4 @@
 // Line Position Function
-
 window.addEventListener('resize', LinePosTimeout);
 
 function LinePosition() {
