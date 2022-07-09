@@ -1,8 +1,8 @@
 // Line Position Function
 //commit test
-window.addEventListener('resize', LinePosTimeout);
+window.addEventListener('resize', linePosTimeout);
 
-function LinePosition() {
+function linePosition() {
 
         for (var i = 1; i < lineNum; i++) {
 
@@ -26,9 +26,9 @@ function LinePosition() {
         }
 }
 
-function LinePosTimeout() {
+function linePosTimeout() {
     for (var i = 0; i<250; i++) {
-    setTimeout(LinePosition, i)
+    setTimeout(linePosition, i)
     }
 }
 
@@ -40,7 +40,7 @@ var clickone = false;
 var clicktwo = false;
 
 //Connect Button Style Property Toggle Function
-function ConnectToggle() {
+function connectToggle() {
     connectstate = !connectstate;
     var connect = document.getElementById('connect');
     if (connectstate == true) {
@@ -133,7 +133,7 @@ function ModuleToggle() {
     modulebox.style.height = collapsestate ? '49vh' : '5vh';
     collapsestate = !collapsestate;
     NodePosition();
-    LinePosTimeout();
+    linePosTimeout();
 }
 
 //Module Select
@@ -239,20 +239,20 @@ function MagentaBorder() {
 //ORBIT FUNCTIONS
 var orbstep = 1;
 
-//Orbit Expand & Contract (Radial Scroll) Functions
-function Expand() {
+//Orbit expand & contract (Radial Scroll) Functions
+function expand() {
     orbstep++;
     ScrollStep();
-    LinePosTimeout();
+    linePosTimeout();
 }
 
-function Contract() {
+function contract() {
     orbstep--;
     if (orbstep < 1) {
         orbstep = 12;
     }
     ScrollStep();
-    LinePosTimeout();
+    linePosTimeout();
 }
 
 const orbred = document.getElementById('orb-red');
@@ -794,7 +794,7 @@ function AddNode() {
         }
 
     NodePosition();
-    LinePosTimeout();
+    linePosTimeout();
 
 
 }
@@ -853,7 +853,7 @@ function removeNode() {
         NodePosition();
         }
 
-        LinePosTimeout();
+        linePosTimeout();
 
 }
 
