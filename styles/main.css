@@ -1,4 +1,8 @@
-
+#adj {
+  position: absolute;
+  right: 10px;
+  bottom: 0;
+}
 
 #selectmodule {
   top: 42.5vh;
@@ -57,8 +61,8 @@
   position: relative;
   top: 18px;
   right: 20px;
-
 }
+
 
 
 #NodeHeader {
@@ -73,6 +77,11 @@
 }
 
 .nodelistcontainer {
+  overflow: hidden;
+}
+
+.listgroup::-webkit-scrollbar {
+  display: none;
   overflow: hidden;
 }
 
@@ -272,7 +281,7 @@ button {
 
 
 body {
-  background-color: #181818 !important;
+  background-color: rgb(20, 20, 30) !important;
   overflow: hidden;
   justify-content: center;
   align-items: center;
@@ -296,9 +305,9 @@ body {
 
 #modulebox {
   position: fixed;
-  width: 95vw;
+  width: 90vw;
   height: 5vh;
-  background: #282828;
+  background: rgb(30, 30, 40);
   bottom: 0;
   -webkit-transition: height 0.2s, width 0.2s;
   transition: height 0.2s, width 0.2s;
@@ -312,7 +321,7 @@ body {
 
 #topbar {
   height: 5vh;
-  background-color: #3c3c3c;
+  background-color: rgb(40, 40, 50);
   position: relative;
 }
 
