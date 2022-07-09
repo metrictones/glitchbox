@@ -341,7 +341,7 @@ body {
 }
 
 #expand:hover {
-  border: 2px solid white;
+  border: 1px solid white;
 }
 
 #contract {
@@ -353,7 +353,7 @@ body {
 }
 
 #contract:hover {
-  border: 2px solid white;
+  border: 1px solid white;
 }
 
 #orb-red {
