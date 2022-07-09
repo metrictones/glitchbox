@@ -1,6 +1,6 @@
 #adj {
   position: absolute;
-  right: 10px;
+  right: 0;
   bottom: 0;
 }
 
@@ -305,10 +305,10 @@ body {
 
 #modulebox {
   position: fixed;
-  width: 90vw;
-  height: 5vh;
+  width: 44px;
+  height: 100vh;
   background: rgb(30, 30, 40);
-  bottom: 0;
+  right: 0;
   -webkit-transition: height 0.2s, width 0.2s;
   transition: height 0.2s, width 0.2s;
   -webkit-box-pack: center;

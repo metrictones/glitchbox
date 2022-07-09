@@ -130,7 +130,7 @@ var collapsestate = true;
 
 //Module Box Toggle
 function ModuleToggle() {
-    modulebox.style.height = collapsestate ? '49vh' : '5vh';
+    modulebox.style.width = collapsestate ? '40vw' : '44px';
     collapsestate = !collapsestate;
     NodePosition();
     linePosTimeout();
