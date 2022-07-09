@@ -1,5 +1,5 @@
 // Line Position Function
-//commit test
+
 window.addEventListener('resize', linePosTimeout);
 
 function linePosition() {
