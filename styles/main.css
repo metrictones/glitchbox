@@ -1,7 +1,125 @@
-#adj {
+#control {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 60px;
+}
+
+
+#upchev {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+#upchev:hover {
+  stroke: white;
+}
+
+#downchev {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+#downchev:hover {
+  stroke: white;
+}
+
+
+#concon {
+position: absolute;
+bottom: 0;
+left: 0;
+height: 48px;
+width: 20vw;
+}
+
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+#linecontainter {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+
+
+#plus {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  margin: auto;
+}
+
+
+
+
+#plus:hover {
+  stroke: white;
+}
+
+#fright {
   position: absolute;
   right: 0;
-  bottom: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#fright:hover {
+  stroke: white;
+}
+
+#fleft {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+}
+
+
+
+#fleft:hover {
+  stroke: white;
+}
+
+
+#minus:hover {
+  stroke-width: 2px;
+}
+
+#mainFlex {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+
+#adj {
+  position: absolute;
+  right: 5px;
+  bottom:4px;
+  width: 40px;
+  height: 40px;
+}
+
+#adj:hover {
+  stroke-width: 1px;
 }
 
 #selectmodule {
@@ -108,7 +226,10 @@
 
 #connect {
   position: absolute;
-  top: -10%;
+  height: 30px;
+  top: 10px;
+  left: 10px;
+
 }
 
 .removenode {
@@ -291,33 +412,82 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  position: absolute;
-  top: 10vh;
+  position: relative;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 80vh;
-  width: 100vw;
+  height: 95vh;
+  width: 95vh;
+  flex-basis: 95%;
+
 }
 
 #modulebox {
-  position: fixed;
-  width: 44px;
+margin-left: auto;
+  width: 48px;
   height: 100vh;
   background: rgb(30, 30, 40);
-  right: 0;
   -webkit-transition: height 0.2s, width 0.2s;
-  transition: height 0.2s, width 0.2s;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  transition: width 0.2s;
+  display: flex;
+  align-items: flex-end;
 }
+
+#modules {
+  background-color: rgb(40, 40, 50);
+  flex-basis: auto;
+  height: 45px;
+  width: 30vw;
+  display: flex;
+  justify-content: top;
+  align-items: center;
+  opacity: 0;
+  transition: opacity .2s;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+     -moz-user-select: none; /* Old versions of Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+          user-select: none; /* Non-prefixed version, currently
+                                supported by Chrome, Edge, Opera and Firefox */
+
+}
+
+#modules:hover {
+  opacity: .8
+}
+
+.spacer {
+  flex-grow: 1;
+}
+
+.plusmod {
+  color: white;
+  opacity: .8;
+  font-size: 24pt;
+  font-family: 'Times New Roman', Times, serif;
+  text-align: center;
+  vertical-align: center;
+  cursor: default;
+
+
+}
+
+.plus {
+  flex-grow: 1;
+  color: white;
+  text-align: center;
+  font-size: 30pt;
+  font: Helvetica;
+  font-family: 'Times New Roman', Times, serif;
+
+  opacity: .8;
+
+}
+
 
 #topbar {
   height: 5vh;
@@ -333,7 +503,7 @@ body {
   position: fixed;
   width: 14vh;
   height: 14vh;
-  opacity: 0.8;
+  opacity: 0.5;
   -webkit-user-select: none;
   -moz-user-select: none;
   -o-user-select: none;
@@ -367,10 +537,10 @@ body {
 
 #orb-red {
   border-radius: 50%;
-  position: fixed;
+  position: relative;
   width: 20vh;
   height: 20vh;
-  border: 1px solid red;
+  border: 1px dashed red;
   -webkit-transition: width 0.2s, height 0.2s, opacity 0.2s;
   transition: width 0.2s, height 0.2s, opacity 0.2s;
 }
@@ -381,7 +551,7 @@ body {
   position: fixed;
   width: 30vh;
   height: 30vh;
-  border: 1px solid orange;
+  border: 1px dashed orange;
   -webkit-transition: width 0.2s, height 0.2s, opacity 0.2s;
   transition: width 0.2s, height 0.2s, opacity 0.2s;
 }
@@ -391,7 +561,7 @@ body {
   position: fixed;
   width: 40vh;
   height: 40vh;
-  border: 1px solid yellow;
+  border: 1px dashed yellow;
   -webkit-transition: width 0.2s, height 0.2s, opacity 0.2s;
   transition: width 0.2s, height 0.2s, opacity 0.2s;
 }
@@ -401,7 +571,7 @@ body {
   position: fixed;
   width: 50vh;
   height: 50vh;
-  border: 1px solid lime;
+  border: 1px dashed lime;
   -webkit-transition: width 0.2s, height 0.2s, opacity 0.2s;
   transition: width 0.2s, height 0.2s, opacity 0.2s;
 }
@@ -411,7 +581,7 @@ body {
   position: fixed;
   width: 60vh;
   height: 60vh;
-  border: 1px solid cyan;
+  border: 1px dashed cyan;
   -webkit-transition: width 0.2s, height 0.2s, opacity 0.2s;
   transition: width 0.2s, height 0.2s, opacity 0.2s;
 }
@@ -421,7 +591,7 @@ body {
   position: fixed;
   width: 70vh;
   height: 70vh;
-  border: 1px solid magenta;
+  border: 1px dashed magenta;
   -webkit-transition: width 0.2s, height 0.2s, opacity 0.2s;
   transition: width 0.2s, height 0.2s, opacity 0.2s;
 }
@@ -431,7 +601,7 @@ body {
   position: fixed;
   width: 80vh;
   height: 80vh;
-  border: 1px solid red;
+  border: 1px dashed red;
   opacity: 0;
   -webkit-transition: width 0.2s, height 0.2s, opacity 0.2s;
   transition: width 0.2s, height 0.2s, opacity 0.2s;
@@ -443,7 +613,7 @@ body {
   position: fixed;
   width: 10vh;
   height: 10vh;
-  border: 1px solid orange;
+  border: 1px dashed orange;
   opacity: 0;
   -webkit-transition: width 0.2s, height 0.2s, opacity 0.2s;
   transition: width 0.2s, height 0.2s, opacity 0.2s;
@@ -455,7 +625,7 @@ body {
   position: fixed;
   width: 10vh;
   height: 10vh;
-  border: 1px solid yellow;
+  border: 1px dashed yellow;
   opacity: 0;
   -webkit-transition: width 0.2s, height 0.2s, opacity 0.2s;
   transition: width 0.2s, height 0.2s, opacity 0.2s;
@@ -466,7 +636,7 @@ body {
   position: fixed;
   width: 10vh;
   height: 10vh;
-  border: 1px solid lime;
+  border: 1px dashed lime;
   opacity: 0;
   -webkit-transition: width 0.2s, height 0.2s, opacity 0.2s;
   transition: width 0.2s, height 0.2s, opacity 0.2s;
@@ -477,7 +647,7 @@ body {
   position: fixed;
   width: 10vh;
   height: 10vh;
-  border: 1px solid cyan;
+  border: 1px dashed cyan;
   opacity: 0;
   -webkit-transition: width 0.2s, height 0.2s, opacity 0.2s;
   transition: width 0.2s, height 0.2s, opacity 0.2s;
@@ -488,7 +658,7 @@ body {
   position: fixed;
   width: 10vh;
   height: 10vh;
-  border: 1px solid magenta;
+  border: 1px dashed magenta;
   opacity: 0;
   -webkit-transition: width 0.2s, height 0.2s, opacity 0.2s;
   transition: width 0.2s, height 0.2s, opacity 0.2s;

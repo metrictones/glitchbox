@@ -1,4 +1,23 @@
 // Line Position Function
+document.addEventListener("keydown", event => {
+    let x = event.key;
+    if (x == "m" || x == "M" || x == "`") {
+        ModuleToggle();
+    }
+
+    if (x == "ArrowUp") {
+        expand();
+    }
+
+    if (x == "ArrowDown") {
+        contract();
+    }
+
+    if (x == "n" || x == "N") {
+        AddNode();
+    }
+})
+
 
 window.addEventListener('resize', linePosTimeout);
 
@@ -121,8 +140,22 @@ document.querySelector(".nodecontainer").addEventListener('click', function(e) {
     }
 });
 
+const mouseTarget = document.getElementById('modules');
 
+mouseTarget.addEventListener('mouseenter', e => {
+    if (collapsestate == false) {
+    mouseTarget.style.opacity = .8;}
 
+    if (collapsestate == true) {
+        mouseTarget.style.opacity = 0;}
+    
+        
+});
+
+mouseTarget.addEventListener('mouseleave', e => {
+    if (collapsestate == false) {
+    mouseTarget.style.opacity = .4;}
+});
 
 const modulebox = document.getElementById('modulebox');
 
@@ -130,10 +163,12 @@ var collapsestate = true;
 
 //Module Box Toggle
 function ModuleToggle() {
-    modulebox.style.width = collapsestate ? '40vw' : '44px';
+    modulebox.style.width = collapsestate ? '50vw' : '48px';
+    document.getElementById("modules").style.opacity = collapsestate ? "0.4" : "0";
     collapsestate = !collapsestate;
     NodePosition();
     linePosTimeout();
+    console.log(collapsestate);
 }
 
 //Module Select
@@ -673,8 +708,9 @@ var currentAngle = 0;
 
 //Add & Remove Node Functions
 function AddNode() {
-    var currentorbit = $("#orbitselect").find("option:selected").val();
+    //var currentorbit = $("#orbitselect").find("option:selected").val();
 
+    var currentorbit = 1;
     if (currentorbit == 1) {
         numRedNodes++;
         var newnode = document.createElement("div");
@@ -800,12 +836,13 @@ function AddNode() {
 }
 
 function removeNode() {
-    var currentorbit = $("#orbitselect").find("option:selected").val();
+    //var currentorbit = $("#orbitselect").find("option:selected").val();
+    var currentorbit = 1;
 
     if (currentorbit == 1) {
-        var redlistitem = document.getElementById("redlistitem"+numRedNodes);
+        //var redlistitem = document.getElementById("redlistitem"+numRedNodes);
         var latestrednode = document.getElementById("rednode"+numRedNodes);
-        redlistitem.remove();
+        //redlistitem.remove();
         latestrednode.remove();
         numRedNodes--;
         NodePosition();
