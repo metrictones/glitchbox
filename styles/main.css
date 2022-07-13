@@ -1,10 +1,10 @@
 #control {
   position: absolute;
-  bottom: 15px;
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 80px;
-  height: 60px;
+  width: 100px;
+  height: 70px;
 }
 
 
@@ -20,7 +20,7 @@
 
 #downchev {
   position: absolute;
-  bottom: 0;
+  bottom: 50%;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -51,15 +51,18 @@ canvas {
   left: 0;
 }
 
-
+#orbnav {
+  position: absolute;
+  left: 50%;
+  top: 20%;
+  transform: translateX(-50%);
+}
 
 #plus {
   position: absolute;
-  top: 50%;
+  bottom: 0;
   left: 50%;
-  transform: translate(-50%, -50%);
-  display: block;
-  margin: auto;
+  transform: translateX(-50%);
 }
 
 
@@ -71,8 +74,8 @@ canvas {
 
 #fright {
   position: absolute;
-  right: 0;
-  top: 50%;
+  right: 5%;
+  bottom: -25%;
   transform: translateY(-50%);
 }
 
@@ -82,9 +85,9 @@ canvas {
 
 #fleft {
   position: absolute;
-  top: 50%;
+  bottom: -25%;
   transform: translateY(-50%);
-  left: 0;
+  left: 5%;
 }
 
 
@@ -116,6 +119,7 @@ canvas {
   bottom:4px;
   width: 40px;
   height: 40px;
+  transition: opacity, 0.2s;
 }
 
 #adj:hover {
@@ -169,11 +173,6 @@ canvas {
   display: none;
 }
 
-#addmodule {
-  position: absolute;
-  top: 42vh;
-  left: 0px;
-}
 
 .listnodes {
   position: relative;
@@ -269,10 +268,9 @@ button {
   background-color: red;
   position: absolute;
   margin: -4px;
-  -webkit-transition: opacity 0.2s, -webkit-transform 0.2s;
+  -webkit-transition: opacity 0.2s;
   transition: opacity 0.2s, -webkit-transform 0.2s;
   transition: transform 0.2s, opacity 0.2s;
-  transition: transform 0.2s, opacity 0.2s, -webkit-transform 0.2s;
   -webkit-user-select: none;
   -moz-user-select: none;
   -o-user-select: none;
@@ -436,13 +434,45 @@ margin-left: auto;
   align-items: flex-end;
 }
 
+#modulecontainer {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  height: 100vh;
+  background-color: rgb(30, 30, 40);
+  flex-grow: 1;
+}
+
+#sidebar {
+  background-color: rgb(30, 30, 40);
+  height: 100vh;
+  width: 48px;
+}
+#sidebarStatic {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: rgb(30, 30, 40);
+  height: 100vh;
+  width: 48px;
+}
+
+#addModule {
+  display: flex;
+  height: 48px;
+  background-color: rgb(40, 40, 50);
+  opacity: 0.5;
+  transition: opacity, 0.2s;
+}
+
+
+
 #modules {
   background-color: rgb(40, 40, 50);
   flex-basis: auto;
   height: 45px;
   width: 30vw;
   display: flex;
-  justify-content: top;
   align-items: center;
   opacity: 0;
   transition: opacity .2s;
@@ -472,6 +502,10 @@ margin-left: auto;
   text-align: center;
   vertical-align: center;
   cursor: default;
+  -webkit-user-select: none; /* Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
 
 
 }
@@ -516,7 +550,7 @@ margin-left: auto;
   position: fixed;
   width: 13vh;
   height: 13vh;
-  border: 1px dashed grey;
+  border: 1px solid grey;
 }
 
 #expand:hover {
@@ -528,7 +562,7 @@ margin-left: auto;
   position: fixed;
   width: 6.5vh;
   height: 6.5vh;
-  border: 1px dashed grey;
+  border: 1px solid grey;
 }
 
 #contract:hover {
@@ -540,9 +574,9 @@ margin-left: auto;
   position: relative;
   width: 20vh;
   height: 20vh;
-  border: 1px dashed red;
+  border: 1px solid red;
   -webkit-transition: width 0.2s, height 0.2s, opacity 0.2s;
-  transition: width 0.2s, height 0.2s, opacity 0.2s;
+  transition: width 0.2s, height 0.2s, opacity 0.2s, border 0.2s;
 }
 
 
@@ -551,9 +585,9 @@ margin-left: auto;
   position: fixed;
   width: 30vh;
   height: 30vh;
-  border: 1px dashed orange;
+  border: 1px solid orange;
   -webkit-transition: width 0.2s, height 0.2s, opacity 0.2s;
-  transition: width 0.2s, height 0.2s, opacity 0.2s;
+  transition: width 0.2s, height 0.2s, opacity 0.2s, border 0.2s;
 }
 
 #orb-yellow {
@@ -561,9 +595,9 @@ margin-left: auto;
   position: fixed;
   width: 40vh;
   height: 40vh;
-  border: 1px dashed yellow;
+  border: 1px solid yellow;
   -webkit-transition: width 0.2s, height 0.2s, opacity 0.2s;
-  transition: width 0.2s, height 0.2s, opacity 0.2s;
+  transition: width 0.2s, height 0.2s, opacity 0.2s, border 0.2s;
 }
 
 #orb-lime {
@@ -571,9 +605,9 @@ margin-left: auto;
   position: fixed;
   width: 50vh;
   height: 50vh;
-  border: 1px dashed lime;
+  border: 1px solid lime;
   -webkit-transition: width 0.2s, height 0.2s, opacity 0.2s;
-  transition: width 0.2s, height 0.2s, opacity 0.2s;
+  transition: width 0.2s, height 0.2s, opacity 0.2s, border 0.2s;
 }
 
 #orb-cyan {
@@ -581,9 +615,9 @@ margin-left: auto;
   position: fixed;
   width: 60vh;
   height: 60vh;
-  border: 1px dashed cyan;
+  border: 1px solid cyan;
   -webkit-transition: width 0.2s, height 0.2s, opacity 0.2s;
-  transition: width 0.2s, height 0.2s, opacity 0.2s;
+  transition: width 0.2s, height 0.2s, opacity 0.2s, border 0.2s;
 }
 
 #orb-magenta {
@@ -591,9 +625,9 @@ margin-left: auto;
   position: fixed;
   width: 70vh;
   height: 70vh;
-  border: 1px dashed magenta;
+  border: 1px solid magenta;
   -webkit-transition: width 0.2s, height 0.2s, opacity 0.2s;
-  transition: width 0.2s, height 0.2s, opacity 0.2s;
+  transition: width 0.2s, height 0.2s, opacity 0.2s, border 0.2s;
 }
 
 #orb-red2 {
@@ -601,10 +635,10 @@ margin-left: auto;
   position: fixed;
   width: 80vh;
   height: 80vh;
-  border: 1px dashed red;
+  border: 1px solid red;
   opacity: 0;
   -webkit-transition: width 0.2s, height 0.2s, opacity 0.2s;
-  transition: width 0.2s, height 0.2s, opacity 0.2s;
+  transition: width 0.2s, height 0.2s, opacity 0.2s, border 0.2s;
 }
 
 
@@ -613,10 +647,10 @@ margin-left: auto;
   position: fixed;
   width: 10vh;
   height: 10vh;
-  border: 1px dashed orange;
+  border: 1px solid orange;
   opacity: 0;
   -webkit-transition: width 0.2s, height 0.2s, opacity 0.2s;
-  transition: width 0.2s, height 0.2s, opacity 0.2s;
+  transition: width 0.2s, height 0.2s, opacity 0.2s, border 0.2s;
 }
 
 
@@ -625,10 +659,10 @@ margin-left: auto;
   position: fixed;
   width: 10vh;
   height: 10vh;
-  border: 1px dashed yellow;
+  border: 1px solid yellow;
   opacity: 0;
   -webkit-transition: width 0.2s, height 0.2s, opacity 0.2s;
-  transition: width 0.2s, height 0.2s, opacity 0.2s;
+  transition: width 0.2s, height 0.2s, opacity 0.2s, border 0.2s;
 }
 
 #orb-lime2 {
@@ -636,10 +670,10 @@ margin-left: auto;
   position: fixed;
   width: 10vh;
   height: 10vh;
-  border: 1px dashed lime;
+  border: 1px solid lime;
   opacity: 0;
   -webkit-transition: width 0.2s, height 0.2s, opacity 0.2s;
-  transition: width 0.2s, height 0.2s, opacity 0.2s;
+  transition: width 0.2s, height 0.2s, opacity 0.2s, border 0.2s;
 }
 
 #orb-cyan2 {
@@ -647,10 +681,10 @@ margin-left: auto;
   position: fixed;
   width: 10vh;
   height: 10vh;
-  border: 1px dashed cyan;
+  border: 1px solid cyan;
   opacity: 0;
   -webkit-transition: width 0.2s, height 0.2s, opacity 0.2s;
-  transition: width 0.2s, height 0.2s, opacity 0.2s;
+  transition: width 0.2s, height 0.2s, opacity 0.2s, border 0.2s;
 }
 
 #orb-magenta2 {
@@ -658,8 +692,8 @@ margin-left: auto;
   position: fixed;
   width: 10vh;
   height: 10vh;
-  border: 1px dashed magenta;
+  border: 1px solid magenta;
   opacity: 0;
   -webkit-transition: width 0.2s, height 0.2s, opacity 0.2s;
-  transition: width 0.2s, height 0.2s, opacity 0.2s;
+  transition: width 0.2s, height 0.2s, opacity 0.2s, border 0.2s;
 }
