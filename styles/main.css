@@ -576,7 +576,7 @@ margin-left: auto;
   height: 20vh;
   border: 1px solid red;
   -webkit-transition: width 0.2s, height 0.2s, opacity 0.2s;
-  transition: width 0.2s, height 0.2s, opacity 0.2s, border 0.2s;
+  transition: width 0.2s, height 0.2s, opacity 0.2s;
 }
 
 
@@ -587,7 +587,7 @@ margin-left: auto;
   height: 30vh;
   border: 1px solid orange;
   -webkit-transition: width 0.2s, height 0.2s, opacity 0.2s;
-  transition: width 0.2s, height 0.2s, opacity 0.2s, border 0.2s;
+  transition: width 0.2s, height 0.2s, opacity 0.2s;
 }
 
 #orb-yellow {
@@ -597,7 +597,7 @@ margin-left: auto;
   height: 40vh;
   border: 1px solid yellow;
   -webkit-transition: width 0.2s, height 0.2s, opacity 0.2s;
-  transition: width 0.2s, height 0.2s, opacity 0.2s, border 0.2s;
+  transition: width 0.2s, height 0.2s, opacity 0.2s;
 }
 
 #orb-lime {
@@ -607,7 +607,7 @@ margin-left: auto;
   height: 50vh;
   border: 1px solid lime;
   -webkit-transition: width 0.2s, height 0.2s, opacity 0.2s;
-  transition: width 0.2s, height 0.2s, opacity 0.2s, border 0.2s;
+  transition: width 0.2s, height 0.2s, opacity 0.2s;
 }
 
 #orb-cyan {
@@ -617,7 +617,7 @@ margin-left: auto;
   height: 60vh;
   border: 1px solid cyan;
   -webkit-transition: width 0.2s, height 0.2s, opacity 0.2s;
-  transition: width 0.2s, height 0.2s, opacity 0.2s, border 0.2s;
+  transition: width 0.2s, height 0.2s, opacity 0.2s;
 }
 
 #orb-magenta {
@@ -627,7 +627,7 @@ margin-left: auto;
   height: 70vh;
   border: 1px solid magenta;
   -webkit-transition: width 0.2s, height 0.2s, opacity 0.2s;
-  transition: width 0.2s, height 0.2s, opacity 0.2s, border 0.2s;
+  transition: width 0.2s, height 0.2s, opacity 0.2s;
 }
 
 #orb-red2 {
@@ -638,7 +638,7 @@ margin-left: auto;
   border: 1px solid red;
   opacity: 0;
   -webkit-transition: width 0.2s, height 0.2s, opacity 0.2s;
-  transition: width 0.2s, height 0.2s, opacity 0.2s, border 0.2s;
+  transition: width 0.2s, height 0.2s, opacity 0.2s;
 }
 
 
@@ -650,7 +650,7 @@ margin-left: auto;
   border: 1px solid orange;
   opacity: 0;
   -webkit-transition: width 0.2s, height 0.2s, opacity 0.2s;
-  transition: width 0.2s, height 0.2s, opacity 0.2s, border 0.2s;
+  transition: width 0.2s, height 0.2s, opacity 0.2s;
 }
 
 
@@ -662,7 +662,7 @@ margin-left: auto;
   border: 1px solid yellow;
   opacity: 0;
   -webkit-transition: width 0.2s, height 0.2s, opacity 0.2s;
-  transition: width 0.2s, height 0.2s, opacity 0.2s, border 0.2s;
+  transition: width 0.2s, height 0.2s, opacity 0.2s;
 }
 
 #orb-lime2 {
@@ -673,7 +673,7 @@ margin-left: auto;
   border: 1px solid lime;
   opacity: 0;
   -webkit-transition: width 0.2s, height 0.2s, opacity 0.2s;
-  transition: width 0.2s, height 0.2s, opacity 0.2s, border 0.2s;
+  transition: width 0.2s, height 0.2s, opacity 0.2s;
 }
 
 #orb-cyan2 {
@@ -684,7 +684,7 @@ margin-left: auto;
   border: 1px solid cyan;
   opacity: 0;
   -webkit-transition: width 0.2s, height 0.2s, opacity 0.2s;
-  transition: width 0.2s, height 0.2s, opacity 0.2s, border 0.2s;
+  transition: width 0.2s, height 0.2s, opacity 0.2s;
 }
 
 #orb-magenta2 {
@@ -695,5 +695,5 @@ margin-left: auto;
   border: 1px solid magenta;
   opacity: 0;
   -webkit-transition: width 0.2s, height 0.2s, opacity 0.2s;
-  transition: width 0.2s, height 0.2s, opacity 0.2s, border 0.2s;
+  transition: width 0.2s, height 0.2s, opacity 0.2s;
 }
