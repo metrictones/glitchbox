@@ -1,5 +1,78 @@
-// Line Position Function
+// Key Events
+document.addEventListener("keydown", event => {
+    let x = event.key;
+    if (x == "m" || x == "M" || x == "`") {
+        ModuleToggle();
+    }
 
+    if (x == "ArrowUp") {
+        expand();
+    }
+
+    if (x == "ArrowDown") {
+        contract();
+    }
+
+    if (x == "ArrowRight") {
+        focusOrb++;
+        if (focusOrb == 6){
+            focusOrb = 0;
+        }
+        orbFocus();
+    }
+    if (x == "ArrowLeft") {
+        focusOrb--;
+        if (focusOrb < 0){
+            focusOrb = 5;
+        }
+        orbFocus();
+    }
+
+    if (x == "n" || x == "N") {
+        AddNode();
+    }
+
+    if (x == "Escape") {
+        focusOrb = -1;
+        orbFocus();
+    }
+})
+
+
+
+//Focus Functions
+var focusOrb = -1;
+
+const colorArray = ["red", "orange", "yellow", "lime", "cyan", "magenta"];
+
+
+
+function orbFocus() {
+    for (let i = 0; i < 6; i++ ){
+        let orbit = document.getElementsByClassName("orb-" + colorArray[i])
+        orbit[0].style.border = "1px solid " + colorArray[i];
+        orbit[1].style.border = "1px solid " + colorArray[i];
+
+        if (focusOrb == -1) {
+        let orbNav = document.getElementById("orbnav");
+        orbNav.setAttribute("stroke", "grey");
+        orbNav.setAttribute("stroke-width", "1px");
+        }
+
+            if (focusOrb == i) {
+            let orbit = document.getElementsByClassName("orb-" + colorArray[focusOrb])
+            let orbNav = document.getElementById("orbnav");
+            orbit[0].style.border = "3px solid " + colorArray[focusOrb];
+            orbit[1].style.border = "3px solid " + colorArray[focusOrb];
+            orbNav.setAttribute("stroke", colorArray[i]);
+            orbNav.setAttribute("stroke-width", "2px");
+            }  
+    }
+}
+
+
+
+// Line Functions
 window.addEventListener('resize', linePosTimeout);
 
 function linePosition() {
@@ -121,8 +194,22 @@ document.querySelector(".nodecontainer").addEventListener('click', function(e) {
     }
 });
 
+const mouseTarget = document.getElementById('addModule');
 
+mouseTarget.addEventListener('mouseenter', e => {
+    if (collapsestate == false) {
+    mouseTarget.style.opacity = .8;}
 
+    if (collapsestate == true) {
+        mouseTarget.style.opacity = 0;}
+    
+        
+});
+
+mouseTarget.addEventListener('mouseleave', e => {
+    if (collapsestate == false) {
+    mouseTarget.style.opacity = .5;}
+});
 
 const modulebox = document.getElementById('modulebox');
 
@@ -130,10 +217,12 @@ var collapsestate = true;
 
 //Module Box Toggle
 function ModuleToggle() {
-    modulebox.style.width = collapsestate ? '40vw' : '44px';
+    modulebox.style.width = collapsestate ? '50vw' : '48px';
+    document.getElementById("addModule").style.opacity = collapsestate ? "0.5" : "0";
     collapsestate = !collapsestate;
     NodePosition();
     linePosTimeout();
+    console.log(collapsestate);
 }
 
 //Module Select
@@ -673,9 +762,10 @@ var currentAngle = 0;
 
 //Add & Remove Node Functions
 function AddNode() {
-    var currentorbit = $("#orbitselect").find("option:selected").val();
+    //var currentorbit = $("#orbitselect").find("option:selected").val();
 
-    if (currentorbit == 1) {
+    var currentorbit = 1;
+    if (focusOrb == 0) {
         numRedNodes++;
         var newnode = document.createElement("div");
         newnode.classList.add("rednodes");
@@ -696,7 +786,7 @@ function AddNode() {
 
 
         }
-    if (currentorbit == 2) {
+    if (focusOrb == 1) {
         numOrangeNodes++;
         var newnode = document.createElement("div");
         newnode.classList.add("orangenodes");
@@ -715,7 +805,7 @@ function AddNode() {
         $("#orangelist").prepend(orangelistitem);
         $(".orangelistitem"+numOrangeNodes).append(orangelistnode);
         }
-    if (currentorbit == 3) {
+    if (focusOrb == 2) {
         numYellowNodes++;
         var newnode = document.createElement("div");
         newnode.classList.add("yellownodes");
@@ -734,7 +824,7 @@ function AddNode() {
         $("#yellowlist").prepend(yellowlistitem);
         $(".yellowlistitem"+numYellowNodes).append(yellowlistnode);
         }
-    if (currentorbit == 4) {
+    if (focusOrb == 3) {
         numGreenNodes++;
         var newnode = document.createElement("div");
         newnode.classList.add("greennodes");
@@ -753,7 +843,7 @@ function AddNode() {
         $("#greenlist").prepend(greenlistitem);
         $(".greenlistitem"+numGreenNodes).append(yellowlistnode);
         }
-    if (currentorbit == 5) {
+    if (focusOrb == 4) {
         numCyanNodes++;
         var newnode = document.createElement("div");
         newnode.classList.add("cyannodes");
@@ -772,7 +862,7 @@ function AddNode() {
         $("#cyanlist").prepend(cyanlistitem);
         $(".cyanlistitem"+numCyanNodes).append(cyanlistnode);
         }
-    if (currentorbit == 6) {
+    if (focusOrb == 5) {
         numMagentaNodes++;
         var newnode = document.createElement("div");
         newnode.classList.add("magentanodes");
@@ -800,12 +890,13 @@ function AddNode() {
 }
 
 function removeNode() {
-    var currentorbit = $("#orbitselect").find("option:selected").val();
+    //var currentorbit = $("#orbitselect").find("option:selected").val();
+    var currentorbit = 1;
 
     if (currentorbit == 1) {
-        var redlistitem = document.getElementById("redlistitem"+numRedNodes);
+        //var redlistitem = document.getElementById("redlistitem"+numRedNodes);
         var latestrednode = document.getElementById("rednode"+numRedNodes);
-        redlistitem.remove();
+        //redlistitem.remove();
         latestrednode.remove();
         numRedNodes--;
         NodePosition();
@@ -889,25 +980,25 @@ function RedPosition() {
     if (orbstep == 11) {redTrans = 30;}
     if (orbstep == 12) {redTrans = 35;}
 
-    if (collapsestate == true) {
+    if (collapsestate == true || collapsestate == false) {
         for (var i = 1; i <= numRedNodes; i++) {
 
             newAngle = (360/numRedNodes)*(i-1)-90;
             $("#rednode"+i).css('transform', "rotate("+newAngle+"deg)"+" translate("+redTrans+"vh)");
         }
     }
-    if (collapsestate == false) {
-        if (numRedNodes == 1) {
-            $("#rednode1").css('transform', "rotate(-180deg)"+" translate("+redTrans+"vh)");
-        }
-        else {
-            for (var i = 1; i <= numRedNodes; i++) {
+    // if (collapsestate == false) {
+    //     if (numRedNodes == 1) {
+    //         $("#rednode1").css('transform', "rotate(-180deg)"+" translate("+redTrans+"vh)");
+    //     }
+    //     else {
+    //         for (var i = 1; i <= numRedNodes; i++) {
 
-                newAngle = (180/(numRedNodes-1))*(i-1)-180;
-                $("#rednode"+i).css('transform', "rotate("+newAngle+"deg)"+" translate("+redTrans+"vh)");
-            }
-        }
-    }
+    //             newAngle = (180/(numRedNodes-1))*(i-1)-180;
+    //             $("#rednode"+i).css('transform', "rotate("+newAngle+"deg)"+" translate("+redTrans+"vh)");
+    //         }
+    //     }
+    // }
 }
 function OrangePosition() {
     if (orbstep == 1) {orangeTrans = 15;}
@@ -924,7 +1015,7 @@ function OrangePosition() {
     if (orbstep == 12) {orangeTrans = 10;}
 
 
-    if (collapsestate == true) {
+    if (collapsestate == true || collapsestate == false) {
         for (var i = 1; i <= numOrangeNodes; i++) {
 
             newAngle = (360/numOrangeNodes)*(i-1)-90;
@@ -932,19 +1023,19 @@ function OrangePosition() {
 
         }
     }
-    if (collapsestate == false) {
-        if (numOrangeNodes == 1) {
-            $("#orangenode1").css('transform', "rotate(-180deg)"+" translate("+orangeTrans+"vh)");
-        }
-        else {
-            for (var i = 1; i <= numOrangeNodes; i++) {
+    // if (collapsestate == false) {
+    //     if (numOrangeNodes == 1) {
+    //         $("#orangenode1").css('transform', "rotate(-180deg)"+" translate("+orangeTrans+"vh)");
+    //     }
+    //     else {
+    //         for (var i = 1; i <= numOrangeNodes; i++) {
 
-                newAngle = (180/(numOrangeNodes-1))*(i-1)-180;
-                $("#orangenode"+i).css('transform', "rotate("+newAngle+"deg)"+" translate("+orangeTrans+"vh)");
+    //             newAngle = (180/(numOrangeNodes-1))*(i-1)-180;
+    //             $("#orangenode"+i).css('transform', "rotate("+newAngle+"deg)"+" translate("+orangeTrans+"vh)");
 
-            }
-        }
-    }
+    //         }
+    //     }
+    // }
 }
 function YellowPosition() {
     if (orbstep == 1) {yellowTrans = 20;}
@@ -961,7 +1052,7 @@ function YellowPosition() {
     if (orbstep == 12) {yellowTrans = 15;}
 
 
-    if (collapsestate == true) {
+    if (collapsestate == true || collapsestate == false) {
         for (var i = 1; i <= numYellowNodes; i++) {
 
             newAngle = (360/numYellowNodes)*(i-1)-90;
@@ -969,19 +1060,19 @@ function YellowPosition() {
 
         }
     }
-    if (collapsestate == false) {
-        if (numYellowNodes == 1) {
-            $("#yellownode1").css('transform', "rotate(-180deg)"+" translate("+yellowTrans+"vh)");
-        }
-        else {
-            for (var i = 1; i <= numYellowNodes; i++) {
+    // if (collapsestate == false) {
+    //     if (numYellowNodes == 1) {
+    //         $("#yellownode1").css('transform', "rotate(-180deg)"+" translate("+yellowTrans+"vh)");
+    //     }
+    //     else {
+    //         for (var i = 1; i <= numYellowNodes; i++) {
 
-                newAngle = (180/(numYellowNodes-1))*(i-1)-180;
-                $("#yellownode"+i).css('transform', "rotate("+newAngle+"deg)"+" translate("+yellowTrans+"vh)");
+    //             newAngle = (180/(numYellowNodes-1))*(i-1)-180;
+    //             $("#yellownode"+i).css('transform', "rotate("+newAngle+"deg)"+" translate("+yellowTrans+"vh)");
 
-            }
-        }
-    }
+    //         }
+    //     }
+    // }
 }
 function GreenPosition() {
     if (orbstep == 1) {greenTrans = 25;}
@@ -998,7 +1089,7 @@ function GreenPosition() {
     if (orbstep == 12) {greenTrans = 20;}
 
 
-    if (collapsestate == true) {
+    if (collapsestate == true || collapsestate == false) {
         for (var i = 1; i <= numGreenNodes; i++) {
 
             newAngle = (360/numGreenNodes)*(i-1)-90;
@@ -1006,19 +1097,19 @@ function GreenPosition() {
 
         }
     }
-    if (collapsestate == false) {
-        if (numGreenNodes == 1) {
-            $("#greennode1").css('transform', "rotate(-180deg)"+" translate("+greenTrans+"vh)");
-        }
-        else {
-            for (var i = 1; i <= numGreenNodes; i++) {
+    // if (collapsestate == false) {
+    //     if (numGreenNodes == 1) {
+    //         $("#greennode1").css('transform', "rotate(-180deg)"+" translate("+greenTrans+"vh)");
+    //     }
+    //     else {
+    //         for (var i = 1; i <= numGreenNodes; i++) {
 
-                newAngle = (180/(numGreenNodes-1))*(i-1)-180;
-                $("#greennode"+i).css('transform', "rotate("+newAngle+"deg)"+" translate("+greenTrans+"vh)");
+    //             newAngle = (180/(numGreenNodes-1))*(i-1)-180;
+    //             $("#greennode"+i).css('transform', "rotate("+newAngle+"deg)"+" translate("+greenTrans+"vh)");
 
-            }
-        }
-    }
+    //         }
+    //     }
+    // }
 }
 function CyanPosition() {
     if (orbstep == 1) {cyanTrans = 30;}
@@ -1035,7 +1126,7 @@ function CyanPosition() {
     if (orbstep == 12) {cyanTrans = 25;}
 
 
-    if (collapsestate == true) {
+    if (collapsestate == true || collapsestate == false) {
         for (var i = 1; i <= numCyanNodes; i++) {
 
             newAngle = (360/numCyanNodes)*(i-1)-90;
@@ -1043,19 +1134,19 @@ function CyanPosition() {
 
         }
     }
-    if (collapsestate == false) {
-        if (numCyanNodes == 1) {
-            $("#cyannode1").css('transform', "rotate(-180deg)"+" translate("+cyanTrans+"vh)");
-        }
-        else {
-            for (var i = 1; i <= numCyanNodes; i++) {
+    // if (collapsestate == false) {
+    //     if (numCyanNodes == 1) {
+    //         $("#cyannode1").css('transform', "rotate(-180deg)"+" translate("+cyanTrans+"vh)");
+    //     }
+    //     else {
+    //         for (var i = 1; i <= numCyanNodes; i++) {
 
-                newAngle = (180/(numCyanNodes-1))*(i-1)-180;
-                $("#cyannode"+i).css('transform', "rotate("+newAngle+"deg)"+" translate("+cyanTrans+"vh)");
+    //             newAngle = (180/(numCyanNodes-1))*(i-1)-180;
+    //             $("#cyannode"+i).css('transform', "rotate("+newAngle+"deg)"+" translate("+cyanTrans+"vh)");
 
-            }
-        }
-    }
+    //         }
+    //     }
+    // }
 }
 function MagentaPosition() {
     if (orbstep == 1) {magentaTrans = 35;}
@@ -1072,7 +1163,7 @@ function MagentaPosition() {
     if (orbstep == 12) {magentaTrans = 30;}
 
 
-    if (collapsestate == true) {
+    if (collapsestate == true || collapsestate == false) {
         for (var i = 1; i <= numMagentaNodes; i++) {
 
             newAngle = (360/numMagentaNodes)*(i-1)-90;
@@ -1080,17 +1171,17 @@ function MagentaPosition() {
 
         }
     }
-    if (collapsestate == false) {
-        if (numMagentaNodes == 1) {
-            $("#magentanode1").css('transform', "rotate(-180deg)"+" translate("+magentaTrans+"vh)");
-        }
-        else {
-            for (var i = 1; i <= numMagentaNodes; i++) {
+    // if (collapsestate == false) {
+    //     if (numMagentaNodes == 1) {
+    //         $("#magentanode1").css('transform', "rotate(-180deg)"+" translate("+magentaTrans+"vh)");
+    //     }
+    //     else {
+    //         for (var i = 1; i <= numMagentaNodes; i++) {
 
-                newAngle = (180/(numMagentaNodes-1))*(i-1)-180;
-                $("#magentanode"+i).css('transform', "rotate("+newAngle+"deg)"+" translate("+magentaTrans+"vh)");
+    //             newAngle = (180/(numMagentaNodes-1))*(i-1)-180;
+    //             $("#magentanode"+i).css('transform', "rotate("+newAngle+"deg)"+" translate("+magentaTrans+"vh)");
 
-            }
-        }
-    }
+    //         }
+    //     }
+    // }
 }
